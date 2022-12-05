@@ -231,7 +231,8 @@ float ultrasonico_get_distance_cm(uint8_t trigger, uint8_t echo) //función que 
         from = get_absolute_time(); //instante cuando el echo no recibe el 1 del trigger
     }
 
-    while(gpio_get(echo)) {
+    while(gpio_get(echo)) 
+    {
         to = get_absolute_time(); //instante en que recibe el 1 del trigger
     }
 
