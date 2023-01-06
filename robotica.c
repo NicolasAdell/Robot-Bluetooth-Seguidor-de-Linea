@@ -57,13 +57,13 @@ int main(void)
 
     while (true)
     {   
-        // Calcula distancia del infrarrojo
-        float distance = ultrasonico_get_distance_cm(TRIGGER, ECHO); //el ultrasónico calcula la distancia
+        // Calcula la distancia el ultrasonido
+        float distance = ultrasonico_get_distance_cm(TRIGGER, ECHO);
 
         // Se obtiene el valor de los infrarrojos
-        bool infrarrojo_fren = infrarrojo_get(INF_FREN); //el infrarrojo del frente da su valor
-        bool infrarrojo_der = infrarrojo_get(INF_DER); //el infrarrojo de la derecha da su valor
-        bool infrarrojo_izq = infrarrojo_get(INF_IZQ); //el infrarrojo de la izquierda da su valor
+        bool infrarrojo_fren = infrarrojo_get(INF_FREN); 
+        bool infrarrojo_der = infrarrojo_get(INF_DER);
+        bool infrarrojo_izq = infrarrojo_get(INF_IZQ);or
 
         // Verifica el estado de la llave de modo bluettoth
         bool bluetooth_mode = bluetooth_mode_get(BLUETOOTH_MODE);
@@ -105,8 +105,8 @@ int main(void)
                 // Si el comando es una 'L', el robot debe girar a la izquierda
                 else if (command == 'L')
                 {
-                    motor_forward(MOT_DER_ADE, MOT_DER_ATR); //avanza el motor derecho
-                    motor_reverse(MOT_IZQ_ADE, MOT_IZQ_ATR); //retrocede el motor izquierdo
+                    motor_forward(MOT_DER_ADE, MOT_DER_ATR);
+                    motor_reverse(MOT_IZQ_ADE, MOT_IZQ_ATR);
                 }
 
                 // Si el comando es una 'S', el robot debe frenar
@@ -219,8 +219,8 @@ int main(void)
                 else if (infrarrojo_fren == 0 && infrarrojo_der == 0  && infrarrojo_izq == 1) //condición para que el robot gire a la izquierda
                 {
                     count = 0;
-                    motor_forward(MOT_DER_ADE, MOT_DER_ATR); //avanza el motor derecho
-                    motor_reverse(MOT_IZQ_ADE, MOT_IZQ_ATR); //retrocede el motor izquierdo
+                    motor_forward(MOT_DER_ADE, MOT_DER_ATR);
+                    motor_reverse(MOT_IZQ_ADE, MOT_IZQ_ATR);
                 }
 
                 else
@@ -295,7 +295,7 @@ float ultrasonico_get_distance_cm(uint8_t trigger, uint8_t echo)
     // Cuando el echo está en uno, se va guardando los instantes hasta que deje de recibir
     while (gpio_get(echo)) 
     {
-        to = get_absolute_time(); //instante en que recibe el 1 del trigger
+        to = get_absolute_time();
     }
 
     // Se calcula anche de puslo y se devuelve la distancia
